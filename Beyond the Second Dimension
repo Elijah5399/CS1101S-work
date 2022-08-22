@@ -1,0 +1,28 @@
+1.
+function mosaic(r1, r2, r3, r4) {
+    return stack(
+        beside(r4,r1),beside(r3,r2));
+}
+
+function steps(r1, r2, r3, r4){
+    const r1_new = overlay_frac(3/4,blank,r1);
+    const r2_new = overlay(blank,r2);
+    const r3_new = overlay_frac(1/4,blank,r3);
+    return mosaic(r1_new,r2_new,r3_new,r4);
+}
+
+// Tests
+show(steps(rcross, triangle, corner, nova));
+hollusion(steps(rcross, triangle, corner, nova));
+2.
+function cone(n, rune) {
+    return n === 1 ?
+    rune:
+    overlay_frac((n-1)/n,
+                     scale((n-1)/n,cone(n-1,rune)),
+                     rune);
+}
+
+show(cone(4, circle));
+hollusion(cone(15, circle));
+
