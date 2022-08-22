@@ -1,0 +1,59 @@
+1.
+function besiden(n, rune) {
+    return n === 1 ?
+    rune :
+    beside_frac((n-1)/n,
+                        besiden(n-1,rune),
+                        rune);
+}
+
+show(besiden(7, heart));
+2.
+function besiden(n, rune) {
+    return n === 1 ?
+    rune :
+    beside_frac((n-1)/n,
+                        besiden(n-1,rune),
+                        rune);
+}
+
+function carpet(n, m, rune) {
+    return stackn(n,
+                    besiden(m,rune));
+}
+
+show(carpet(7, 5, heart));
+3.
+/*
+Enter your answers here
+(answer each question in one or two complete sentences):
+
+(a) All the hearts in the carpet are of the same colour.
+
+(b) One heart of a random colour is being shown, then it is copied multiple 
+times to form the carpet using stackn and besiden.
+
+(c) Normal order reduction would cause the stackn to be evaluated first,
+followed by besiden, followed by random_color(heart). 
+If Source used normal order reduction, then the hearts would be all of 
+different colour as the random_color is evaluated last.
+
+*/
+4.
+function besiden(n, rune) {
+    return n === 1 ?
+    random_color(rune) :
+    beside_frac((n-1)/n,
+                        besiden(n-1,rune),
+                        random_color(rune));
+}
+
+function randomly_colored_carpet(n, m, rune) {
+    return n === 1 ?
+    besiden(m,rune):
+    stack_frac((n-1)/n,
+                    randomly_colored_carpet(n-1,m,rune),
+                    besiden(m,rune));
+}
+
+show(randomly_colored_carpet(10,10,heart));
