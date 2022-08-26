@@ -43,8 +43,9 @@ const connect_laps =
 
 
 const draw_times_table =
-    (n, m) => connect_laps(500, v => m % n * v);
+    (n, m) => connect_laps(n, v => m % n * v);
 
+draw_times_table(395,100);
 
 //draw_times_table(100, 2);      // m = 2: cardioid: 1 lobe
 //draw_times_table(100, 3);      // m = 3: nephroid: 2 lobes
